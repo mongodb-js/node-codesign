@@ -1,12 +1,12 @@
 {
-  "name": "electron-installer-codesign",
-  "description": "Sign your electron apps on OSX.",
+  "name": "node-codesign",
+  "description": "Sign your apps on OSX.",
   "version": "0.3.0",
   "author": "Lucas Hrabovsky <lucas@mongodb.com> (http://imlucas.com)",
-  "homepage": "http://github.com/mongodb-js/electron-installer-codesign",
+  "homepage": "http://github.com/mongodb-js/node-codesign",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mongodb-js/electron-installer-codesign.git"
+    "url": "git://github.com/mongodb-js/node-codesign.git"
   },
   "scripts": {
     "test": "mocha",
@@ -18,7 +18,7 @@
     "check"
   ],
   "bin": {
-    "electron-installer-codesign": "bin/electron-installer-codesign.js"
+    "node-codesign": "bin/node-codesign.js"
   },
   "dependencies": {
     "async": "^2.1.2",

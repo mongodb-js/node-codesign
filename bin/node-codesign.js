@@ -9,7 +9,7 @@ var args = require('minimist')(process.argv.slice(2), {
 });
 
 if (args.debug) {
-  process.env.DEBUG = 'electron-installer-codesign';
+  process.env.DEBUG = 'node-codesign';
 }
 
 var codesign = require('../');
