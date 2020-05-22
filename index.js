@@ -39,7 +39,8 @@ function runCodesign(src, opts, fn) {
     src
   ];
 
-  run('codesign', args, function(err) {
+  run('codesign', args, function(err, output) {
+    debug(output);
     if (err) {
       fn(new Error('codesign failed ' + path.basename(src)
         + '. See output above for more details.'));
