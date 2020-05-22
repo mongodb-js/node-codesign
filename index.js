@@ -159,8 +159,6 @@ module.exports = function(opts, done) {
   async.series([
     checkAppExists.bind(null, opts),
     cleanup.bind(null, opts),
-    codesign.bind(null, opts.appPath + '/Contents/Frameworks/*', opts),
-    codesign.bind(null, opts.appPath + '/Contents/MacOS/*', opts),
     codesign.bind(null, opts.appPath, opts),
     verify.bind(null, opts.appPath)
   ], done);
