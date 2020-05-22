@@ -7,7 +7,7 @@ var glob = require('glob');
 var async = require('async');
 var chalk = require('chalk');
 var figures = require('figures');
-var debug = require('debug')('electron-installer-codesign');
+var debug = require('debug')('node-codesign');
 
 function checkAppExists(opts, fn) {
   debug('checking appPath `%s` exists...', opts.appPath);
@@ -34,8 +34,9 @@ function runCodesign(src, opts, fn) {
     '-s',
     opts.identity,
     '-vvv',
-    '--deep',
     '--force',
+    '--options',
+    'runtime',
     src
   ];
 
