@@ -36,9 +36,14 @@ function runCodesign(src, opts, fn) {
     '-vvv',
     '--force',
     '--options',
-    'runtime',
-    src
+    'runtime'
   ];
+
+  if (opts.entitlements) {
+    args.push('--entitlements', opts.entitlements);
+  }
+
+  args.push(src);
 
   run('codesign', args, function(err, output) {
     debug(output);
