@@ -7,7 +7,7 @@ var async = require('async');
 var chalk = require('chalk');
 var figures = require('figures');
 var debug = require('debug')('node-codesign');
-const { execFile } = require('child_process');
+var execFile = require('child_process').execFile;
 
 function checkAppExists(opts, fn) {
   debug('checking appPath `%s` exists...', opts.appPath);
