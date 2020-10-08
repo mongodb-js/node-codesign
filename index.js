@@ -2,12 +2,12 @@
 var fs = require('fs');
 var path = require('path');
 var del = require('del');
-var run = require('electron-installer-run');
 var glob = require('glob');
 var async = require('async');
 var chalk = require('chalk');
 var figures = require('figures');
 var debug = require('debug')('node-codesign');
+const { execFile } = require('child_process');
 
 function checkAppExists(opts, fn) {
   debug('checking appPath `%s` exists...', opts.appPath);
@@ -45,7 +45,7 @@ function runCodesign(src, opts, fn) {
 
   args.push(src);
 
-  run('codesign', args, function(err, output) {
+  execFile('codesign', args, function(err, output) {
     debug(output);
     if (err) {
       fn(new Error('codesign failed ' + path.basename(src)
@@ -130,7 +130,7 @@ function verify(src, fn) {
     '-vvv',
     src
   ];
-  run('codesign', args, function(err) {
+  execFile('codesign', args, function(err) {
     if (err) {
       return fn(err);
     }
@@ -143,7 +143,7 @@ function verify(src, fn) {
  * @param {Function} fn - Callback.
  */
 function isIdentityAvailable(commonName, fn) {
-  run('certtool', ['y'], function(err, output) {
+  execFile('certtool', ['y'], function(err, output) {
     if (err) {
       debug('Failed to list certificates.');
       fn(null, false);
